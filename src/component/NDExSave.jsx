@@ -3,9 +3,10 @@ import React from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-import Paper from 'material-ui/Paper'
-import CatagoryList from './CatagoryList'
-import CatagoryCard from './CatagoryCard'
+import AppBar from 'material-ui/AppBar'
+import FlatButton from 'material-ui/FlatButton'
+
+import Catagories from './Catagories'
 
 export default class NDExSave extends React.Component {
 
@@ -15,44 +16,40 @@ export default class NDExSave extends React.Component {
       height: '100%',
       overflow: 'hidden'
     },
-    theme: {}
+    theme: {},
+    networkName: "",
+    onLoad: function(N, C) {}
   }
 
+  onLoad() {
+    this.props.onLoad(this.props.networkName, this.props.catagories)
+  }
 
   render() {
-    const listStyle = {
-      height: '96%',
-      width: '47%',
-      margin: '2%',
-      marginRight: '1%',
-      float: 'left'
+    const style = this.props.style
+    const navStyle = {
+      height: '6%',
+      width: '100%',
+      margin: 0
     }
-    const cardStyle = {
-      height: '96%',
-      width: '47%',
-      margin: '2%',
-      marginLeft: '1%',
-      float: 'right'
+    const catagoriesStyle = {
+      height: '94%',
+      width: '100%',
+      margin: 0
     }
     const theme = getMuiTheme(this.props.theme)
     return (
       <MuiThemeProvider muiTheme={theme}>
-        <div style={{ width: '100%', height: '100%' }}>
-          <Paper
-            zDepth={2}
-            style={listStyle}
-          >
-            <CatagoryList
-              catagories={this.props.catagories}
-              catagoryActions={this.props.catagoryActions}
-            />
-          </Paper>
-          <Paper
-            zDepth={2}
-            style={cardStyle}
-          >
-            <CatagoryCard/>
-          </Paper>
+        <div style={style}>
+          <AppBar
+            title={this.props.networkName}
+            style={navStyle}
+            showMenuIconButton={false}
+            iconElementRight={
+              <FlatButton label="Save" onClick={this.onLoad.bind(this)} />
+            }
+          />
+          <Catagories {...this.props} />
         </div>
       </MuiThemeProvider>
     )

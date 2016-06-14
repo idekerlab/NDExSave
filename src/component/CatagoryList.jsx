@@ -29,10 +29,17 @@ export default class CatagoryList extends React.Component {
 
   selectCatagory(catagoryName) {
     this.props.catagoryActions.select(catagoryName)
+    this.setState({
+      open: false
+    })
   }
 
   unselectCatagory(catagoryName) {
     this.props.catagoryActions.unselect(catagoryName)
+  }
+
+  setCurrentCatagory(catagoryName) {
+    this.props.setCurrentCatagory(catagoryName)
   }
 
   render() {
@@ -46,7 +53,7 @@ export default class CatagoryList extends React.Component {
         return (<RaisedButton
           label={C}
           primary={true}
-          onClick={this.unselectCatagory.bind(this, C)}
+          onClick={this.setCurrentCatagory.bind(this, C)}
           style={{ width: '100%', marginTop: '4%'}}
           fullWidth={true}
         />)
