@@ -30,8 +30,8 @@ export default class NDExSave extends React.Component {
           v: this.props.catagories[C].get('fields')
         }]
       })
-    }
-    var cx = cx.map(function(E) {
+    })
+    cx = cx.map(function(E) {
       if (E.name && E.name == "networkAttributes") {
         E.consistencyGroup++
       }
