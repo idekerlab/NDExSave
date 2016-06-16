@@ -50,7 +50,7 @@ export default function catagories(state = defaultState, action) {
       return state
   }
 }
-
+/*
 export function fieldsCompleted(catagory) {
   var empty_flag = false
   var done_flag = false
@@ -69,7 +69,7 @@ export function fieldsCompleted(catagory) {
     return "all"
   }
 }
-
+*/
 export function select(catagoryName) {
   return {
     type: SELECT,
