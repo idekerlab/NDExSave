@@ -22,7 +22,7 @@ export default class NDExSave extends React.Component {
   }
 
   onSave() {
-    var cx = JSON.stringify(this.props.cx)
+    var cx = JSON.parse(this.props.cx)
     Object.keys(this.props.catagories).map((C) => {
       cx.push({
         networkAttributes: [{
