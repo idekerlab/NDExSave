@@ -17,12 +17,27 @@ export default class NDExSave extends React.Component {
       overflow: 'hidden'
     },
     theme: {},
-    networkName: "",
-    onLoad: function(N, C) {}
+    networkName: "NDExSave",
+    onSave: function(cx) { console.log(cx) }
   }
 
-  onLoad() {
-    this.props.onLoad(this.props.networkName, this.props.catagories)
+  onSave() {
+    var cx = JSON.stringify(this.props.cx)
+    Object.keys(this.props.catagories).map((C) => {
+      cx.push({
+        networkAttributes: [{
+          n: C,
+          v: this.props.catagories[C].get('fields')
+        }]
+      })
+    }
+    var cx = cx.map(function(E) {
+      if (E.name && E.name == "networkAttributes") {
+        E.consistencyGroup++
+      }
+      return E
+    })
+    this.props.onSave(cx)
   }
 
   render() {
@@ -46,7 +61,7 @@ export default class NDExSave extends React.Component {
             style={navStyle}
             showMenuIconButton={false}
             iconElementRight={
-              <FlatButton label="Save" onClick={this.onLoad.bind(this)} />
+              <FlatButton label="Save" onClick={this.onSave.bind(this)} />
             }
           />
           <Catagories {...this.props} />

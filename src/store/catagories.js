@@ -26,9 +26,6 @@ const defaultState = {
 export default function catagories(state = defaultState, action) {
   switch(action.type) {
     case SELECT:
-      console.log(state)
-      console.log(action)
-      console.log(state[action.catagoryName])
       state[action.catagoryName] =  state[action.catagoryName].set('selected', true)
       return state
     case UNSELECT:
@@ -39,7 +36,6 @@ export default function catagories(state = defaultState, action) {
         Fs[action.field] = action.update
         return Fs
       })
-      console.log(a)
       state[action.catagoryName] = a
       return state
     case CLEAR:
@@ -52,6 +48,25 @@ export default function catagories(state = defaultState, action) {
       return state
     default:
       return state
+  }
+}
+
+export function fieldsCompleted(catagory) {
+  var empty_flag = false
+  var done_flag = false
+  Object.keys(catagory.fields).map((field) => {
+    if (field == "") {
+      empty_flag = true
+    } else {
+      done_flag = true
+    }
+  })
+  if (empty_flag && done_flag) {
+    return "some"
+  } else (empty_flag) {
+    return "none"
+  } else {
+    return "all"
   }
 }
 
