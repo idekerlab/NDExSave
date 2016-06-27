@@ -21,21 +21,21 @@ export default class Catagories extends React.Component {
 
   render() {
     const listStyle = {
-      height: '96%',
+      height: '90%',
       width: '47%',
       margin: '2%',
       marginRight: '1%',
       float: 'left'
     }
     const cardStyle = {
-      height: '96%',
+      height: '90%',
       width: '47%',
       margin: '2%',
       marginLeft: '1%',
       float: 'right'
     }
     return (
-      <div style={{ width: '100%', height: '94%' }}>
+      <div style={{ width: '100%', height: '90%' }}>
         <Paper
           zDepth={2}
           style={listStyle}

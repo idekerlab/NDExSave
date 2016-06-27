@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import AppBar from 'material-ui/AppBar'
-import FlatButton from 'material-ui/FlatButton'
+import RaisedButton from 'material-ui/RaisedButton'
 
 import Catagories from './Catagories'
 
@@ -17,6 +17,7 @@ export default class NDExSave extends React.Component {
       overflow: 'hidden'
     },
     theme: {},
+    catagories: [],
     networkName: "NDExSave",
     onSave: function(cx) { console.log(cx) }
   }
@@ -28,12 +29,12 @@ export default class NDExSave extends React.Component {
   render() {
     const style = this.props.style
     const navStyle = {
-      height: '6%',
+      height: '10%',
       width: '100%',
       margin: 0
     }
     const catagoriesStyle = {
-      height: '94%',
+      height: '90%',
       width: '100%',
       margin: 0
     }
@@ -46,7 +47,7 @@ export default class NDExSave extends React.Component {
             style={navStyle}
             showMenuIconButton={false}
             iconElementRight={
-              <FlatButton label="Save" onClick={this.onSave.bind(this)} />
+              <RaisedButton label="Save network to NDEx" primary={true} onClick={this.onSave.bind(this)} />
             }
           />
           <Catagories {...this.props} />
