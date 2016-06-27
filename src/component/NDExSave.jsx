@@ -47,7 +47,7 @@ export default class NDExSave extends React.Component {
             style={navStyle}
             showMenuIconButton={false}
             iconElementRight={
-              <RaisedButton label="Save network to NDEx" primary={true} onClick={this.onSave.bind(this)} />
+              <RaisedButton label="Save network to NDEx" secondary={true} onClick={this.onSave.bind(this)} />
             }
           />
           <Catagories {...this.props} />
