@@ -17,7 +17,7 @@ export default class NDExSave extends React.Component {
       overflow: 'hidden'
     },
     theme: {},
-    properties: [],
+    properties: {},
     networkName: "NDExSave",
     onSave: function(newProperties, pub) {
       console.log("Save called with")
@@ -25,8 +25,23 @@ export default class NDExSave extends React.Component {
     }
   }
 
+  constructor(props) {
+    super(props)
+    this.state.properties = this.loadProps(this.props.properties)
+  }
+
+  loadProps(properties) {
+    for (var prop in properties) {
+      var catagory = prop.split(':')
+      if (catagory[0] == "CyCatagory") {
+        this.props.catagoryActions.update(catagory[1], catagory[2], [properties[prop]])
+        delete properties[prop]
+      }
+    }
+  }
+
   onSave(pub) {
-    this.props.onSave([], pub)
+    this.props.onSave({}, pub)
   }
 
   render() {
@@ -54,7 +69,7 @@ export default class NDExSave extends React.Component {
               </div>
             }
           />
-          <Catagories {...this.props} />
+          <Catagories {...this.props} properties={this.state.proprties} />
         </div>
       </MuiThemeProvider>
     )
