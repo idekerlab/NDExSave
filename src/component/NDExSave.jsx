@@ -36,7 +36,7 @@ export default class NDExSave extends React.Component {
     for (var prop in properties) {
       var catagory = prop.split(':')
       if (catagory[0] == "CyCatagory") {
-        this.props.selectCatagory(catagory[1])
+        this.props.select(catagory[1])
         this.props.catagoryActions.updateField(catagory[1], catagory[2], [properties[prop]])
         delete properties[prop]
       }
