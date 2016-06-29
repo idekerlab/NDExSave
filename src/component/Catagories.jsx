@@ -35,7 +35,7 @@ export default class Catagories extends React.Component {
       float: 'right'
     }
     return (
-      <div style={{ width: '100%', height: '90%' }}>
+      <div id="content" style={{ width: '100%'}}>
         <Paper
           zDepth={2}
           style={listStyle}

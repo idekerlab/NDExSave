@@ -17,24 +17,25 @@ export default class NDExSave extends React.Component {
       overflow: 'hidden'
     },
     theme: {},
-    catagories: [],
+    properties: [],
     networkName: "NDExSave",
-    onSave: function(cx) { console.log(cx) }
+    onSave: function(newProperties, pub) {
+      console.log("Save called with")
+      console.log(pub)
+    }
   }
 
-  onSave() {
-    this.props.onSave("")
+  onSave(pub) {
+    this.props.onSave([], pub)
   }
 
   render() {
     const style = this.props.style
     const navStyle = {
-      height: '10%',
       width: '100%',
       margin: 0
     }
     const catagoriesStyle = {
-      height: '90%',
       width: '100%',
       margin: 0
     }
@@ -47,7 +48,10 @@ export default class NDExSave extends React.Component {
             style={navStyle}
             showMenuIconButton={false}
             iconElementRight={
-              <RaisedButton label="Save network to NDEx" secondary={true} onClick={this.onSave.bind(this)} />
+              <div>
+                <RaisedButton label="Save as public network" secondary={true} onClick={this.onSave.bind(this, true)} />
+                <RaisedButton label="Save as private network" secondary={true} onClick={this.onSave.bind(this, false)} style={{ marginLeft: 20 }} />
+              </div>
             }
           />
           <Catagories {...this.props} />
