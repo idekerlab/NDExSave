@@ -46,10 +46,15 @@ export default class NDExSave extends React.Component {
 
   saveProps() {
     var newProperties = {}
-    for (var catagory in this.catagories) {
-      if (catagory.get('selected')) {
+    console.log(this.props.catagories)
+    for (var catagoryName in this.props.catagories) {
+      var catagory = this.props.catagories[catagoryName]
+      if (catagory.get('selected') == true) {
+        console.log("Selected catagory")
         for (var field in catagory.get('fields')) {
-          newProperties['CyCatagory' + ':' + catagory + ':' + field] = catagory.get('fields')[field]
+          console.log("Iterating field")
+          console.log(field)
+          newProperties['CyCatagory' + ':' + catagoryName + ':' + field] = catagory.get('fields')[field]
         }
       }
     }
@@ -57,8 +62,6 @@ export default class NDExSave extends React.Component {
   }
 
   onSave(pub) {
-    console.log(this.state.properties)
-    console.log(this.saveProps())
     this.props.onSave(Object.assign(this.state.properties, this.saveProps()), pub)
   }
 
