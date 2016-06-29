@@ -36,15 +36,30 @@ export default class NDExSave extends React.Component {
     for (var prop in properties) {
       var catagory = prop.split(':')
       if (catagory[0] == "CyCatagory") {
-        this.props.select(catagory[1])
+        this.props.catagoryActions.select(catagory[1])
         this.props.catagoryActions.updateField(catagory[1], catagory[2], [properties[prop]])
         delete properties[prop]
       }
     }
+    return properties
+  }
+
+  saveProps() {
+    var newProperties = {}
+    for (var catagory in this.catagories) {
+      if (catagory.get('selected')) {
+        for (var field in catagory.get('fields')) {
+          newProperties['CyCatagory' + ':' + catagory + ':' + field] = catagory.get('fields')[field]
+        }
+      }
+    }
+    return newProperties
   }
 
   onSave(pub) {
-    this.props.onSave({}, pub)
+    console.log(this.state.properties)
+    console.log(this.saveProps())
+    this.props.onSave(Object.assign(this.state.properties, this.saveProps()), pub)
   }
 
   render() {
