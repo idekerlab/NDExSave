@@ -23,10 +23,9 @@ export default class CatagoryCard extends React.Component {
     if (this.props.currentCatagory) {
       const fields = this.props.catagories[this.props.currentCatagory].get('fields')
       textFields = Object.keys(fields).map(function(F) {
-        console.log(fields)
-        console.log(F)
         return (<TextField
                  style={{ marginTop: '4%' }}
+                 floatingLabelText={F}
                  hintText={F}
                  fullWidth={true}
                  value={fields[F]}
@@ -42,7 +41,7 @@ export default class CatagoryCard extends React.Component {
                              onClick={this.unselect.bind(this, this.props.currentCatagory)}
                            ><NavigationClose/></IconButton>}
         />
-        <div>
+        <div id="catagoryFieldList" style={{ overflow: 'scroll' }}>
           {textFields}
         </div>
       </div>) : (<div></div>)
