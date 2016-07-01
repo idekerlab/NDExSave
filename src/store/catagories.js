@@ -6,33 +6,41 @@ const UPDATE_FIELD = "UPDATE_FIELD"
 const CLEAR        = "CLEAR"
 
 const defaultState = {
-  "Sample 1": Map({
+  "Sources": Map({
     selected: false,
     fields: {
-      "field 1": "",
-      "field 2": "",
-      "field 3": "",
-      "field 4": "",
-      "field 5": "",
-      "field 6": "",
-      "field 7": "",
-      "field 8": "",
-      "field 9": "",
-      "field 10": "",
-      "field 11": "",
-      "field 12": "",
-      "field 13": "",
-      "field 14": "",
-      "field 15": "",
-      "field 16": "",
-      "field 17": ""
+      "Enter a comma seperated list of network sources": ""
     }
   }),
-  "Sample 2": Map({
+  "Publication": Map({
     selected: false,
     fields: {
-      "field 1": "",
-      "field 2": ""
+      "Original Publication Date": "",
+      "Last Updated Date": "",
+      "Journal Name": ""
+    }
+  }),
+  "Gene Universe": Map({
+    selected: false,
+    fields: {
+      "Description of the Network's Gene Set": "",
+      "Total Number of Genes in Set": "",
+      "Number of Genes used from Set": ""
+    }
+  }),
+  "Disease": Map({
+    selected: false,
+    fields: {
+      "Disease Name": "",
+      "Disease ID": ""
+    }
+  }),
+  "Algorithm": Map({
+    selected: false,
+    fields: {
+      "How were the nodes computed": "",
+      "How were the edges computer": "",
+      "Other algorithms": ""
     }
   })
 }
